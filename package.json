@@ -1,0 +1,25 @@
+{
+  "name": "canicas",
+  "version": "0.0.1",
+  "description": "Keep track of your callbacks even without promises",
+  "main": "marbles.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frankpinto/canicas.git"
+  },
+  "keywords": [
+    "counter",
+    "callbacks",
+    "promises",
+    "utility"
+  ],
+  "author": "Frank Pinto <frank.joseph.pinto@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/frankpinto/canicas/issues"
+  },
+  "homepage": "https://github.com/frankpinto/canicas#readme"
+}
