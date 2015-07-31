@@ -24,6 +24,7 @@
   "homepage": "https://github.com/frankpinto/canicas#readme",
   "devDependencies": {
     "chai": "^3.2.0",
+    "chai-spies": "^0.7.0",
     "mocha": "^2.2.5"
   }
 }

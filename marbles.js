@@ -4,22 +4,24 @@
  */
 
 function Marbles() {
-  var promises = 0;
-  var gameOver = function() {
-    if (this.done)
-      this.done();
-  };
+  this.promises = 0;
 }
 
-Marbles.prototype.add = function(n) { promises += n; };
+Marbles.prototype.add = function(n) { this.promises += n; };
 Marbles.prototype.inc = function() { this.add(1); };
 Marbles.prototype.subtract = function(n) {
-  if (promises >= n)
-    promises -= n;
+  if (this.promises >= n)
+    this.promises -= n;
 
-  if (promises === 0)
-    gameOver();
+  if (this.promises === 0)
+    this.gameOver();
 };
 Marbles.prototype.dec = function() { this.subtract(1); };
+Marbles.prototype.gameOver = function() {
+  if (this.done)
+  {
+    this.done();
+  }
+};
 
-module.exports = Object.create(Marbles);
+module.exports = new Marbles();
