@@ -21,6 +21,9 @@ describe('Marbles', function() {
   });
 
   describe('#inc()', function() {
-    it('sets internal counter to 1');
+    it('sets internal counter to 1', function() {
+      marbles.inc();
+      marbles.counter.should.equal(1);
+    });
   });
 });

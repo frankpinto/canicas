@@ -1,19 +1,19 @@
 /** @module lib/marbles
- * Simple module to count promises, or any metric that returns to 0 eventually,
- * and do something when all promises have completed
+ * Simple module to count callbacks, or anything that rises and falls back to 0,
+ * and do something when all callbacks have fired / completed.
  */
 
 function Marbles() {
-  this.promises = 0;
+  this.counter = 0;
 }
 
-Marbles.prototype.add = function(n) { this.promises += n; };
+Marbles.prototype.add = function(n) { this.counter += n; };
 Marbles.prototype.inc = function() { this.add(1); };
 Marbles.prototype.subtract = function(n) {
-  if (this.promises >= n)
-    this.promises -= n;
+  if (this.counter >= n)
+    this.counter -= n;
 
-  if (this.promises === 0)
+  if (this.counter === 0)
     this.gameOver();
 };
 Marbles.prototype.dec = function() { this.subtract(1); };
