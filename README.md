@@ -1,6 +1,8 @@
 # Canicas
 *ca-ni-cuz*
 
+<img alt="Canicas means Marbles in Spanish" src="https://rojosonfacebooknotes.files.wordpress.com/2012/07/glass_marble_round_227274_l1.jpg" width="300" />
+
 Sometimes promises are too much. Example:
 
     var knex = require('knex')({client: 'pg', connection: process.env.PG_CONNECTION_STRING});
