@@ -17,6 +17,7 @@ Marbles.prototype.subtract = function(n) {
     this.gameOver();
 };
 Marbles.prototype.dec = function() { this.subtract(1); };
+Marbles.prototype.reset = function() { this.counter = 0; };
 Marbles.prototype.gameOver = function() {
   if (this.done)
   {

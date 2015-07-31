@@ -12,6 +12,10 @@ describe('Marbles', function() {
     };
   });
 
+  afterEach(function() {
+    marbles.reset();
+  });
+
   it('calls done when internal counter hits 0', function() {
     marbles.done = chai.spy(marbles.done);
 
@@ -24,6 +28,17 @@ describe('Marbles', function() {
     it('sets internal counter to 1', function() {
       marbles.inc();
       marbles.counter.should.equal(1);
+    });
+  });
+
+  describe('#dec()', function() {
+    before(function() {
+      marbles.inc();
+    });
+
+    it('sets internal counter to 0 when 1', function() {
+      marbles.dec();
+      marbles.counter.should.equal(0);
     });
   });
 });
