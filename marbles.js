@@ -17,12 +17,22 @@ Marbles.prototype.subtract = function(n) {
     this.gameOver();
 };
 Marbles.prototype.dec = function() { this.subtract(1); };
-Marbles.prototype.reset = function() { this.counter = 0; };
 Marbles.prototype.gameOver = function() {
   if (this.done)
   {
     this.done();
   }
+};
+
+// Just in case you need more marbles!
+Marbles.prototype.clone = function() {
+  var clone = new Marbles();
+  clone.counter = this.counter;
+  return clone;
+};
+Marbles.prototype.reset = function() {
+  this.counter = 0;
+  return this;
 };
 
 module.exports = new Marbles();
