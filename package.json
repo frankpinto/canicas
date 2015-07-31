@@ -1,6 +1,6 @@
 {
   "name": "canicas",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Keep track of your callbacks even without promises",
   "main": "marbles.js",
   "scripts": {
