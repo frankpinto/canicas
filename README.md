@@ -5,42 +5,49 @@
 
 Sometimes promises are too much. Example:
 
-    var knex = require('knex')({client: 'pg', connection: process.env.PG_CONNECTION_STRING});
+```javascript
+var knex = require('knex')({client: 'pg', connection: process.env.PG_CONNECTION_STRING});
 
-    for (var i = 0; i < 5; i++)
-    {
-      knex('products').insert({title: i + ' bananas', description: 'Full of potassium!'}).then(function() {
-        // Don't care
-      });
-    }
-    // Need to teardown knex pg connection somehow after all inserts are done / callbacks are called
+for (var i = 0; i < 5; i++)
+{
+  knex('products').insert({title: i + ' bananas', description: 'Full of potassium!'}).then(function() {
+    // Don't care
+  });
+}
+// Need to teardown knex pg connection somehow after all inserts are done / callbacks are called
+```
 
 In that case add the function you want to be run when all of your callbacks have fired:
 
 
-    var canicas = require('canicas');
-    canicas.done = function() {
-      knex.destroy(function() {});
-    };
+```javascript
+var canicas = require('canicas');
+canicas.done = function() {
+  knex.destroy(function() {});
+};
+```
 
 Add one every time you spin out a new async function:
 
-
-    // snip
-    for (var i = 0; i < 5; i++)
-    {
-      canicas.inc();
-      knex('products').insert({title: i + ' bananas', description: 'Full of potassium!'}).then(function() {
-    //snip
+```javascript
+// snip
+for (var i = 0; i < 5; i++)
+{
+  canicas.inc();
+  knex('products').insert({title: i + ' bananas', description: 'Full of potassium!'}).then(function() {
+//snip
+```
 
 And make sure to register when a callback has finished:
 
-    // snip
-    knex('products').insert({title: i + ' bananas', description: 'Full of potassium!'}).then(function() {
-      // Some important code
+```javascript
+// snip
+knex('products').insert({title: i + ' bananas', description: 'Full of potassium!'}).then(function() {
+  // Some important code
 
-      canicas.dec();
-    };
+  canicas.dec();
+};
+```
 
 When all callbacks have been fired the function you registered with `canicas.done` will be called.
 
